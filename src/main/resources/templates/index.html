@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>M社区</title>
+    <head th:insert="~{import :: head}"></head>
+</head>
+<body>
+    <div th:insert="~{navigation :: nav}"></div>
+    <div class="container-fluid main">
+        <div class="row">
+            <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                <div class="media">
+                    <div class="media-left">
+
+                    </div>
+                    <div class="media-body">
+
+                    </div>
+                </div>
+                <nav aria-label="Page navigation">
+
+                </nav>
+            </div>
+            <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                <div th:insert="~{notice :: notice}"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
