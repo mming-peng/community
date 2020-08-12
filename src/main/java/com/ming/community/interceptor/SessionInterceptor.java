@@ -1,11 +1,15 @@
 package com.ming.community.interceptor;
 
+import com.ming.community.enums.AdPosEnum;
 import com.ming.community.mapper.UserMapper;
 import com.ming.community.model.User;
 import com.ming.community.model.UserExample;
+import com.ming.community.service.AdService;
+import com.ming.community.service.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,15 +21,20 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
- * @description:
+ * @description:拦截器实现没有登录，也能浏览博客或问题，同时获取cookie，检验用户是否存在，存在则写入session，实现自动登录，并显示通知
  * @author: Ming
  */
-@Service
+@Component
 public class SessionInterceptor implements HandlerInterceptor {
 
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private NotificationService notificationService;
+
+    @Autowired
+    private AdService adService;
 
     @Value("${github.redirect.uri}")
     private String redirectUri;
@@ -39,6 +48,9 @@ public class SessionInterceptor implements HandlerInterceptor {
         request.getServletContext().setAttribute("redirectUri", redirectUri);
         request.getServletContext().setAttribute("clientId", clientId);
         // 没有登录的时候也可以查看导航
+        for (AdPosEnum adPos : AdPosEnum.values()) {
+            request.getServletContext().setAttribute(adPos.name(), adService.list(adPos.name()));
+        }
         Cookie[] cookies = request.getCookies();
         if (cookies != null && cookies.length != 0) {
             for (Cookie cookie : cookies) {
@@ -51,21 +63,13 @@ public class SessionInterceptor implements HandlerInterceptor {
                     if (users.size() != 0) {
                         HttpSession session = request.getSession();
                         session.setAttribute("user", users.get(0));
+                        Long unreadCount = notificationService.unreadCount(users.get(0).getId());
+                        session.setAttribute("unreadCount", unreadCount);
                     }
                     break;
                 }
             }
         }
         return true;
-    }
-
-    @Override
-    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, @Nullable ModelAndView modelAndView) throws Exception {
-
-    }
-
-    @Override
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, @Nullable Exception ex) throws Exception {
-
     }
 }

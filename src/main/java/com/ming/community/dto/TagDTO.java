@@ -1,11 +1,12 @@
-package com.ming.community.cache;
+package com.ming.community.dto;
 
 import lombok.Data;
 
 import java.util.List;
 
 /**
- * Created by codedrinker on 2019/6/5.
+ * @description:标签种类及其内容
+ * @author: Ming
  */
 @Data
 public class TagDTO {

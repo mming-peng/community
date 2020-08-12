@@ -1,7 +1,8 @@
 package com.ming.community.exception;
 
 /**
- * Created by codedrinker on 2019/5/28.
+ * @description:异常码和内容
+ * @author: Ming
  */
 public interface ICustomizeErrorCode {
     String getMessage() ;

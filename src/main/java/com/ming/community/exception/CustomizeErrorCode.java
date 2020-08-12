@@ -1,7 +1,8 @@
 package com.ming.community.exception;
 
 /**
- * Created by codedrinker on 2019/5/28.
+ * @description:错误类型
+ * @author: Ming
  */
 public enum CustomizeErrorCode implements ICustomizeErrorCode {
 

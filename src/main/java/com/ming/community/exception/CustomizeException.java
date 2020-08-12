@@ -1,7 +1,8 @@
 package com.ming.community.exception;
 
 /**
- * Created by codedrinker on 2019/5/28.
+ * @description:异常信息
+ * @author: Ming
  */
 public class CustomizeException extends RuntimeException {
     private String message;

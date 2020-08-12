@@ -3,7 +3,7 @@ package com.ming.community.dto;
 import lombok.Data;
 
 /**
- * @description:
+ * @description:重写compareTo方法，用于比较标签的优先集
  * @author: Ming
  */
 @Data

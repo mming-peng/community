@@ -9,9 +9,9 @@ import java.util.Map;
 import java.util.PriorityQueue;
 
 /**
- * Created by codedrinker on 2019/8/2.
+ * @description:用于获取优先集最高的十个标签
+ * @author: Ming
  */
-
 @Component
 @Data
 public class HotTagCache {
@@ -44,6 +44,6 @@ public class HotTagCache {
             sortedTags.add(0, poll.getName());
             poll = priorityQueue.poll();
         }
-        hots = sortedTags;
+        this.hots = sortedTags;
     }
 }

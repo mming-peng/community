@@ -4,7 +4,7 @@ import com.ming.community.model.User;
 import lombok.Data;
 
 /**
- * @description:
+ * @description:问题属性
  * @author: Ming
  */
 @Data

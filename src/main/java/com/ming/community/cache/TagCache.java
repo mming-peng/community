@@ -1,5 +1,6 @@
 package com.ming.community.cache;
 
+import com.ming.community.dto.TagDTO;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
@@ -8,7 +9,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Created by codedrinker on 2019/6/5.
+ * @description:用List保存所有的标签
+ * @author: Ming
  */
 public class TagCache {
     public static List<TagDTO> get() {
@@ -41,6 +43,11 @@ public class TagCache {
         return tagDTOS;
     }
 
+    /**
+     * 判断用户添加的标签是否在List里面，不在则无效
+     * @param tags
+     * @return
+     */
     public static String filterInvalid(String tags) {
         String[] split = StringUtils.split(tags, ",");
         List<TagDTO> tagDTOS = get();

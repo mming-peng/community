@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * @description:
+ * @description:发表或修改问题控制层
  * @author: Ming
  */
 @Controller
@@ -45,6 +45,9 @@ public class PublishController {
         return "publish";
     }
 
+    /**
+     * 获取用户发表的内容，并进行相应的检验，符合要求即调用service写入数据库
+     */
     @PostMapping("/publish")
     public String doPublish(
             @RequestParam(value = "title", required = false) String title,

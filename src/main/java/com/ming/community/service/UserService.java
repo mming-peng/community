@@ -9,13 +9,14 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * @description:
+ * @description:添加新用户或者更新用户信息
  * @author: Ming
  */
 @Service
 public class UserService {
     @Autowired
     private UserMapper userMapper;
+
 
     public void createOrUpdate(User user) {
         UserExample userExample = new UserExample();

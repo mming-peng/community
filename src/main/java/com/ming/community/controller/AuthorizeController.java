@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.UUID;
 
 /**
- * @description:
+ * @description:第三方GitHub用户授权流程控制
  * @author: Ming
  */
 @Controller
@@ -40,6 +40,13 @@ public class AuthorizeController {
     @Autowired
     private UserService userService;
 
+    /**
+     * 获取用户信息并写入cookie，实现持久化登录
+     * @param code
+     * @param state
+     * @param response
+     * @return
+     */
     @GetMapping("/callback")
     public String callback(@RequestParam(name = "code") String code,
                            @RequestParam(name = "state") String state,
@@ -72,6 +79,12 @@ public class AuthorizeController {
         }
     }
 
+    /**
+     * 退出登录，清空cookie和session
+     * @param request
+     * @param response
+     * @return
+     */
     @GetMapping("/logout")
     public String logout(HttpServletRequest request,
                          HttpServletResponse response) {

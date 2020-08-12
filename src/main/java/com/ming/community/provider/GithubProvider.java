@@ -8,12 +8,18 @@ import okhttp3.*;
 import org.springframework.stereotype.Component;
 
 /**
- * @description:
+ * @description:用于向GitHub发送post请求获取token，有了token之后发送get请求获取GitHub用户信息
  * @author: Ming
  */
 @Component
 @Slf4j
 public class GithubProvider {
+
+    /**
+     * 发送post请求获取token
+     * @param accessTokenDTO
+     * @return
+     */
     public String getAccessToken(AccessTokenDTO accessTokenDTO) {
         MediaType mediaType = MediaType.get("application/json; charset=utf-8");
         OkHttpClient client = new OkHttpClient();
@@ -33,12 +39,16 @@ public class GithubProvider {
         return null;
     }
 
-
+    /**
+     * 发送get请求获取GitHub用户信息
+     * @param accessToken
+     * @return
+     */
     public GithubUser getUser(String accessToken) {
         OkHttpClient client = new OkHttpClient();
-        //        Request request = new Request.Builder()
-////                .url("https://api.github.com/user?access_token=" + accessToken)
-////                .build();
+        /*Request request = new Request.Builder()
+                .url("https://api.github.com/user?access_token=" + accessToken)
+                .build();*/
         Request request = new Request.Builder()
                 .url("https://api.github.com/user")
                 .header("Authorization","token "+accessToken)

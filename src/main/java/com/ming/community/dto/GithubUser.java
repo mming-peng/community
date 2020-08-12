@@ -3,7 +3,7 @@ package com.ming.community.dto;
 import lombok.Data;
 
 /**
- * @description:
+ * @description:Github用户属性
  * @author: Ming
  */
 @Data
