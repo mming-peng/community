@@ -13,7 +13,6 @@
 | Lombok            | https://www.projectlombok.org                                |
 | Bootstrap         | https://v3.bootcss.com/getting-started/                      |
 | Github OAuth      | https://developer.github.com/apps/building-oauth-apps/creating-an-oauth-app/ |                     
-| Bootstrap         | https://v3.bootcss.com/getting-started/                      |
 
 运行 migrate 和 generator 的命令
 ```shell script
