@@ -22,7 +22,7 @@ mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate
 ```
 
 ## 拓展资料
-[OAuth documentation](https://docs.github.com/en/developers/apps/authorizing-oauth-apps)
+[OAuth documentation](https://docs.github.com/en/developers/apps/authorizing-oauth-apps)    
 [Spring 文档](https://spring.io/guides)    
 [Spring Web](https://spring.io/guides/gs/serving-web-content/)    
 [Github deploy key](https://developer.github.com/v3/guides/managing-deploy-keys/#deploy-keys)    
