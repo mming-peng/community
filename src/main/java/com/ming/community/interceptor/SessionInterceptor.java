@@ -4,16 +4,11 @@ import com.ming.community.enums.AdPosEnum;
 import com.ming.community.mapper.UserMapper;
 import com.ming.community.model.User;
 import com.ming.community.model.UserExample;
-import com.ming.community.service.AdService;
 import com.ming.community.service.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.HandlerInterceptor;
-import org.springframework.web.servlet.ModelAndView;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,9 +28,6 @@ public class SessionInterceptor implements HandlerInterceptor {
     @Autowired
     private NotificationService notificationService;
 
-    @Autowired
-    private AdService adService;
-
     @Value("${github.redirect.uri}")
     private String redirectUri;
 
@@ -48,9 +40,6 @@ public class SessionInterceptor implements HandlerInterceptor {
         request.getServletContext().setAttribute("redirectUri", redirectUri);
         request.getServletContext().setAttribute("clientId", clientId);
         // 没有登录的时候也可以查看导航
-        for (AdPosEnum adPos : AdPosEnum.values()) {
-            request.getServletContext().setAttribute(adPos.name(), adService.list(adPos.name()));
-        }
         Cookie[] cookies = request.getCookies();
         if (cookies != null && cookies.length != 0) {
             for (Cookie cookie : cookies) {

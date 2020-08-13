@@ -16,7 +16,7 @@
 <body>
     <div th:insert="~{navigation :: nav}"></div>
     <div class="container-fluid main">
-        <div class="row height: 680px;">
+        <div class="row">
             <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
                 <h3><span class="glyphicon glyphicon-list" aria-hidden="true"></span> 发现</h3>
                 <ul class="nav nav-tabs">
@@ -95,7 +95,6 @@
                     <a th:each="tag : ${tags}" th:href="@{/(page=1,search=${search},tag=${tag},sort=${sort})}"
                        th:text="${tag}" class="community-tag"></a>
                 </div>
-                <div th:insert="~{side :: side}"></div>
             </div>
         </div>
 </div>
