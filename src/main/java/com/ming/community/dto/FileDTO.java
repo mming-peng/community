@@ -3,7 +3,8 @@ package com.ming.community.dto;
 import lombok.Data;
 
 /**
- * Created by codedrinker on 2019/6/26.
+ * @description:错误页面控制
+ * @author: Ming
  */
 @Data
 public class FileDTO {
