@@ -1,6 +1,5 @@
 package com.ming.community.config;
 
-import com.ming.community.interceptor.LoginHandlerInterceptor;
 import com.ming.community.interceptor.SessionInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -17,13 +16,8 @@ public class MvcConfig implements WebMvcConfigurer {
     @Autowired
     private SessionInterceptor sessionInterceptor;
 
-    @Autowired
-    private LoginHandlerInterceptor loginHandlerInterceptor;
-
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(sessionInterceptor).addPathPatterns("/**");
-        registry.addInterceptor(loginHandlerInterceptor).addPathPatterns("/**")
-                .excludePathPatterns("/index.html","/","/callback");
     }
 }
